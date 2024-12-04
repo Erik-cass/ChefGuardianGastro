@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encargado - Historial de Solicitudes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    header {
+      background-color: hsl(212, 16%, 18%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      background-color:  hsl(212, 16%, 18%);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color:  hsl(212, 16%, 18%);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color:  hsl(212, 16%, 18%);
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    footer {
+      background-color:  hsl(212, 16%, 18%);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Encargado - Historial de Solicitudes</h1>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>Alumno</th>
+        <th>Producto Solicitado</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Juan Pérez</td>
+        <td>Bol grande</td>
+        <td>2024-04-14</td>
+      </tr>
+      <tr>
+        <td>María Gómez</td>
+        <td>cucharon</td>
+        <td>2024-04-14</td>
+      </tr>
+      <!-- Puedes agregar más filas con información de solicitudes -->
+    </tbody>
+  </table>
+  <center>
+    <button onclick="history.back()" class="btn btn-danger" >¡Regresar!</button>
+    </center>
+  <footer>
+    
+    <p></p>
+  </footer>
+  
+</body>
+</html>

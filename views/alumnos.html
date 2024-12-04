@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumnos - Solicitar Productos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    header {
+      background-color:  hsl(212, 16%, 18%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    section {
+      background-color: white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color:  hsl(212, 16%, 18%);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color:  hsl(212, 16%, 18%);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color:  hsl(212, 16%, 18%);
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    footer {
+      background-color:  hsl(212, 16%, 18%);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .carrito {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .carrito-icono {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    #carritoProductos {
+      display: none;
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      max-width: 300px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    #carritoProductos ul {
+      padding-left: 0;
+    }
+
+    #carritoProductos li {
+      margin-bottom: 10px;
+    }
+
+    #carritoProductos img {
+      max-width: 50px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-graduation-cap"></i> Alumnos - Solicitar Productos <i class="fas fa-shopping-cart"></i></h1>
+    <div class="carrito" id="verCarrito">
+      <i class="fas fa-shopping-cart carrito-icono"></i>
+    </div>
+  </header>
+  <section id="formulario">
+    <h2>Solicitar Producto</h2>
+    <form id="solicitudForm">
+      <label for="producto">Producto:</label>
+      <input type="text" id="producto" name="producto" placeholder="Ingrese el nombre del producto">
+      <button type="submit"><i class="fas fa-cart-plus"></i> Agregar al Carrito</button>
+    </form>
+  </section>
+  <section id="historial">
+    <h2>Mi Historial de Solicitudes</h2>
+    <ul id="historialLista">
+      <!-- Aquí se insertarán dinámicamente las solicitudes -->
+    </ul>
+  </section>
+  <div id="carritoProductos">
+    <h2>Carrito de Compras</h2>
+    <ul id="carritoLista">
+      <!-- Aquí se insertarán dinámicamente los productos en el carrito -->
+    </ul>
+  </div>
+  <footer>
+    <p></p>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('solicitudForm');
+      const historialLista = document.getElementById('historialLista');
+      const verCarrito = document.getElementById('verCarrito');
+      const carritoProductos = document.getElementById('carritoProductos');
+      const carritoLista = document.getElementById('carritoLista');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar que el formulario se envíe
+
+        const productoInput = document.getElementById('producto');
+        const producto = productoInput.value;
+
+        if (producto.trim() !== '') {
+          const li = document.createElement('li');
+          li.textContent = producto;
+          historialLista.appendChild(li);
+
+          // Agregar producto al carrito
+          const carritoLi = document.createElement('li');
+          carritoLi.textContent = producto;
+          carritoLista.appendChild(carritoLi);
+
+          productoInput.value = ''; // Limpiar el campo de entrada después de agregar el producto
+        }
+      });
+
+      verCarrito.addEventListener('click', function() {
+        carritoProductos.style.display = (carritoProductos.style.display === 'block') ? 'none' : 'block';
+      });
+    });
+  </script>
+  <center>
+    <button onclick="history.back()" class="btn btn-danger" >¡Regresar!</button>
+    </center>
+</body>
+</html>
